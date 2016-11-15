@@ -4,18 +4,13 @@
   background-size: cover;
 }
 
-.input-group {
-  margin: 10% auto;
+form {
+    margin: 8% auto;
+    width: 60%;
 }
 
-.input-group input {
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-.input-group button {
-  border: 1px solid black;
+input, button {
+    margin: 1% auto;
 }
 
 .row {

@@ -8,6 +8,8 @@
     <title>Coming Soon</title>
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" href=@Styles.Render("~/Content/css")>
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 </head>
 <body>
     <div class="container">
@@ -22,14 +24,14 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-3">
-                </div>
-                <div class="col-xs-6">
-                    <div class="input-group">
-                        <input id="emailInput" type="email" class="form-control" placeholder="Email Address" name="emailInput">
-                        <span class="input-group-btn">
+                <div class="col-xs-12">
+                    <div>
+                        <form id="emailForm">
+                            <input id="firstName" type="text" class="form-control" placeholder="First Name (required)" name="firstName" required>
+                            <input id="lastName" type="text" class="form-control" placeholder="Last Name (required)" name="lastName" required>
+                            <input id="emailInput" type="email" class="form-control" placeholder="Email Address (required)" name="emailInput" required>
                             <button id="emailSubmit" class="btn btn-primary" type="button">Notify Me!</button>
-                        </span>
+                        </form>
                     </div>
                     <!-- /input-group -->
                 </div>
@@ -37,13 +39,53 @@
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     <script type="text/javascript">
-        $("#emailSubmit").click(function () {
-            var email = $("#emailInput").val();
-            alert(email);
+        $(document).ready(function () {
+            $("#emailSubmit").click(function () {
 
-            $("#emailInput").val("");
+                var firstName = $("#firstName").val();
+                var lastName = $("#lastName").val();
+                var email = $("#emailInput").val();
+
+                //$("#emailForm").validate({
+                //    rules: {
+                //        email: {
+                //            required: true,
+                //            email: true
+                //        }                        
+                //    },
+
+                //    messages: {
+                //        email: {
+                //            required: "Please enter a valid email address"
+                //        }
+                //    }
+
+                //});
+
+                if (firstName != "" && lastName != "" && email != "") {
+                    $.ajax({
+                        method: "POST",
+                        url: "",
+                        data: {
+                            Name: firstName + " " + lastName,
+                            Email: email
+                        }
+                    })
+                      .done(function () {
+                          alert("Thank you for registering");
+                      });
+
+                    $("#firstName").val("");
+                    $("#lastName").val("");
+                    $("#emailInput").val("");
+                }
+                else {
+                    alert("Please complete the form")
+                }
+            });            
+
+                
         });
     </script>
 
