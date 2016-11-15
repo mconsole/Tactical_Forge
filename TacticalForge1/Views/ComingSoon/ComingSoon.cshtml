@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+<html lang="en">
+
+<head>
+    <title>Coming Soon</title>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href=@Styles.Render("~/Content/css")>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Tactical Forge</h1>
+        </div>
+        <div class="row"></div>
+        <div id="grey_square">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Coming Soon</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                </div>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input id="emailInput" type="email" class="form-control" placeholder="Email Address" name="emailInput">
+                        <span class="input-group-btn">
+                            <button id="emailSubmit" class="btn btn-primary" type="button">Notify Me!</button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        $("#emailSubmit").click(function () {
+            var email = $("#emailInput").val();
+            alert(email);
+
+            $("#emailInput").val("");
+        });
+    </script>
+
+</body>
+
+</html>
+
